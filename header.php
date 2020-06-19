@@ -104,6 +104,7 @@
 					<button aria-label="menu" class="menu-toggler" title="Menu" id="mb-menu-toggler">
 					<span class="menu-toggler-bg mb"></span> 
 					<span class="menu-toggler-expand mb"></span>
+					<span class="menu-toggler-expand white mb"></span>
 						<svg viewBox="0 0 70 70" width="48" height="48" class="menu-toggler-wrap mb">
 							<circle r="34" cx="35" cy="35"></circle>
 						</svg>
@@ -193,7 +194,8 @@
 					<!-- Added button to trigger DESKTOP menu -->
 					<button aria-label="menu" class="menu-toggler" title="Menu" id="dt-menu-toggler">
 					<span class="menu-toggler-bg dt"></span>
-					<span class="menu-toggler-expand dt"></span>
+					<span class="menu-toggler-expand purple dt"></span>
+					<span class="menu-toggler-expand white dt"></span>
 						<svg viewBox="0 0 70 70" width="48" height="48" class="menu-toggler-wrap dt">
 							<circle r="34" cx="35" cy="35"></circle>
 						</svg>
@@ -229,15 +231,24 @@
 								</li>
 								<li class="edge">
 									<a>Edge</a>
-									<p class="item-coming-soon"><span></span>Coming Soon</p>
+									<p class="item-coming-soon">
+										<span class="item-dash"></span>
+										<span class="item-text">Coming Soon</span>
+									</p>
 								</li>
 								<li class="optimise">
 									<a>Optimise</a>
-									<p class="item-coming-soon"><span></span>Coming Soon</p>
+									<p class="item-coming-soon">
+										<span class="item-dash"></span>
+										<span class="item-text">Coming Soon</span>
+									</p>
 								</li>
 								<li class="boost">
 									<a>Boost</a>
-									<p class="item-coming-soon"><span></span>Coming Soon</p>
+									<p class="item-coming-soon">
+										<span class="item-dash"></span>
+										<span class="item-text">Coming Soon</span>
+									</p>
 								</li>
 							</ul>
 						</div>
@@ -247,6 +258,7 @@
 				<svg class="nav-scroll-indicator" width="19" height="12" viewBox="0 0 19 12" fill="none" xmlns="http://www.w3.org/2000/svg">
 					<path d="M18 1.58398L9.97917 9.60482C9.97917 9.60482 5.09066 4.71631 1.95833 1.58398" stroke="white" stroke-width="2" stroke-linecap="round"/>
 				</svg>
+				<span class="nav-gradient-footer"></span>
 			</div>
 
 		</nav>

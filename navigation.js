@@ -61,11 +61,19 @@ const runMobileNav = function() {
     if(mobileNavWrapper.classList.contains('active')){
         setTimeout(function() {
             mbNavItemsUp()
+            logoTag.forEach(tag => {
+                tag.style.fill = "white"
+            })
         }, 1000)
     } else {
         mbNavItemsDown()
+        mobileNav.classList.remove('active')
+        setTimeout(function() {
+            logoTag.forEach(tag => {
+                tag.style.fill = ""
+            })
+        }, 500)
     }
-
 
 }
 
@@ -103,6 +111,28 @@ const desktopNav = document.querySelector('nav.page-nav.desktop div.nav-overlay'
 const desktopNavLinks = desktopNav.querySelectorAll('ul.menu li a')
 const dtSecondaryNavigation = document.querySelector('div.secondary-menu-container')
 
+// hover nav links to drop opacity and highlight the selected
+desktopNavLinks.forEach(link => {
+
+    link.addEventListener('mouseenter', function () {
+        link.style.opacity = '0.2'
+
+        desktopNavLinks.forEach(link => {
+            link.style.opacity = '0.2'
+        })
+        link.style.opacity = this.style.color
+    })
+
+    link.addEventListener('mouseout', function () {
+        desktopNavLinks.forEach(link => {
+            link.style.opacity = ''
+        })
+    })
+})
+
+// if nav is open logo is white else is in touched in terms of original styling
+const logoTag = document.querySelectorAll('a.nav-logo svg path:not(.green-circle)')
+
 const runDesktopNav = function () {
     desktopNavWrapper.classList.toggle('active')
     dtSecondaryNavigation.classList.remove('active')
@@ -111,12 +141,19 @@ const runDesktopNav = function () {
         desktopNav.classList.add('active')
         setTimeout(function() {
             dtNavItemsUp()
-            productSpanTag.classList.add('active')
+            // productSpanTag.classList.add('active')
+            logoTag.forEach(tag => {
+                tag.style.fill = "white"
+            })
         }, 1000)
         bodyTag.classList.add('overflow-hidden')
     } else {
+        removeNavScrollTop()
         setTimeout(function() {
             desktopNav.classList.remove('active')
+            logoTag.forEach(tag => {
+                tag.style.fill = ""
+            })
         }, 800)
         dtNavItemsDown()
         secondaryNavItemsDown()
@@ -126,7 +163,7 @@ const runDesktopNav = function () {
             link.classList.remove('fade')
         })
         bodyTag.classList.remove('overflow-hidden')
-        productSpanTag.classList.remove('active')
+        // productSpanTag.classList.remove('active')
     }
 
 }
@@ -148,6 +185,15 @@ const dtNavItemsDown = function() {
             link.style.transform = 'translateY(100%)'
         }, (70 * (index + 1)))
     })
+}
+
+
+// remove scrollTop on overflow scroll elements in the navigation
+const removeNavScrollTop = function () {
+    setTimeout(function (){
+        dtSecondaryNavigation.scrollTop = 0
+        desktopNav.scrollTop = 0
+    }, 1400)
 }
 
 
@@ -177,7 +223,7 @@ const cookDTBurger = function () {
 
     if (bodyTag.classList.contains('dt-menu-open')) {
         dtMenuToggler.setAttribute( 'aria-expanded', 'true' )
-        dtMenuTogglerExpand.style.animation = 'expand 1s cubic-bezier(0.87, 0, 0.13, 1) 0.2s forwards'
+        dtMenuTogglerExpand.style.animation = 'expandPurple 1s cubic-bezier(0.87, 0, 0.13, 1) 0.2s forwards'
         setTimeout(function() {
             dtMenuTogglerExpand.classList.add('fade')
         }, 1200)
@@ -196,6 +242,26 @@ const cookDTBurger = function () {
 // show secondary navigation
 const productTag = document.getElementById('menu-item-20')
 const secondaryNavLinks = document.querySelectorAll('div.secondary-menu-container ul li a')
+
+// same for the secondary nav links
+secondaryNavLinks.forEach(link => {
+
+    link.addEventListener('mouseenter', function () {
+        link.style.opacity = '0.2'
+
+        secondaryNavLinks.forEach(link => {
+            link.style.opacity = '0.2'
+        })
+        link.style.opacity = this.style.color
+    })
+
+    link.addEventListener('mouseout', function () {
+        secondaryNavLinks.forEach(link => {
+            link.style.opacity = ''
+        })
+    })
+})
+
 
 const secondaryNavItemsUp = function() {
 
@@ -248,14 +314,30 @@ dtMenuToggler.addEventListener('click', function () {
 
 // All gradient elements here
 // gradientbutton elements
-const playTag = document.querySelector('li.play')
-const edgeTag = document.querySelector('li.edge')
-const optimiseTag = document.querySelector('li.optimise')
-const boostTag = document.querySelector('li.boost')
+const navFooterGradient = document.querySelector('span.nav-gradient-footer')
 
-const edgeSoon = document.querySelector('li.edge p')
-const optimiseSoon = document.querySelector('li.optimise p')
-const boostSoon = document.querySelector('li.boost p')
+const playTag = document.querySelector('li.play a')
+
+const edgeTag = document.querySelector('li.edge a')
+const edgeOverflow = document.querySelector('li.edge')
+
+const optimiseTag = document.querySelector('li.optimise a')
+const optimiseOverflow = document.querySelector('li.optimise')
+
+const boostTag = document.querySelector('li.boost a')
+const boostOverflow = document.querySelector('li.boost')
+
+const edgeComingSoon = document.querySelector('li.edge p')
+const edgeSpanDash = edgeComingSoon.querySelector('li.edge p span.item-dash')
+const edgeSpanText = edgeComingSoon.querySelector('li.edge p span.item-text')
+
+const optimiseComingSoon = document.querySelector('li.optimise p')
+const optimiseSpanDash = optimiseComingSoon.querySelector('li.optimise p span.item-dash')
+const optimiseSpanText = optimiseComingSoon.querySelector('li.optimise p span.item-text')
+
+const boostComingSoon = document.querySelector('li.boost p')
+const boostSpanDash = boostComingSoon.querySelector('li.boost p span.item-dash')
+const boostSpanText = boostComingSoon.querySelector('li.boost p span.item-text')
 
 // gradient els
 const gradientPlay = document.querySelector('div.gradient.play')
@@ -263,46 +345,68 @@ const gradientEdge = document.querySelector('div.gradient.edge')
 const gradientOptimise = document.querySelector('div.gradient.optimise')
 const gradientBoost = document.querySelector('div.gradient.boost')
 
-playTag.addEventListener('mouseover', function() {
+playTag.addEventListener('mouseenter', function() {
+    navFooterGradient.classList.add('inactive')
     gradientPlay.style.opacity = '1'
 })
 playTag.addEventListener('mouseout', function() {
+    navFooterGradient.classList.remove('inactive')
     gradientPlay.style.opacity = '0'
 })
 // In order to see the coming soon text we need to
 // temp remove the overflow! A little hacky
 // but the mask on the nav elements looks good!
-edgeTag.addEventListener('mouseover', function() {
+edgeTag.addEventListener('mouseenter', function() {
+    edgeSpanDash.classList.add('active')
+    edgeSpanText.classList.add('active')
+    navFooterGradient.classList.add('inactive')
     gradientEdge.style.opacity = '1'
-    edgeTag.style.overflow = 'inherit'
-    edgeSoon.style.opacity = '1'
+    edgeOverflow.style.overflow = 'inherit'
+    edgeComingSoon.style.opacity = '1'
 })
 edgeTag.addEventListener('mouseout', function() {
+    edgeSpanDash.classList.remove('active')
+    edgeSpanText.classList.remove('active')
+    navFooterGradient.classList.remove('inactive')
     gradientEdge.style.opacity = '0'
-    edgeTag.style.overflow = 'hidden'
-    edgeSoon.style.opacity = '0'
+    setTimeout(function(){
+        edgeOverflow.style.overflow = 'hidden'
+    }, 500)
 })
 
-optimiseTag.addEventListener('mouseover', function() {
+optimiseTag.addEventListener('mouseenter', function() {
+    navFooterGradient.classList.add('inactive')
+    optimiseSpanDash.classList.add('active')
+    optimiseSpanText.classList.add('active')
     gradientOptimise.style.opacity = '1'
-    optimiseTag.style.overflow = 'inherit'
-    optimiseSoon.style.opacity = '1'
+    optimiseOverflow.style.overflow = 'inherit'
+
 })
 optimiseTag.addEventListener('mouseout', function() {
+    optimiseSpanDash.classList.remove('active')
+    optimiseSpanText.classList.remove('active')
+    navFooterGradient.classList.remove('inactive')
     gradientOptimise.style.opacity = '0'
-    optimiseTag.style.overflow = 'hidden'
-    optimiseSoon.style.opacity = '0'
+    setTimeout(function(){
+        optimiseOverflow.style.overflow = 'hidden'
+    }, 500)
 })
 
-boostTag.addEventListener('mouseover', function() {
+boostTag.addEventListener('mouseenter', function() {
+    navFooterGradient.classList.add('inactive')
+    boostSpanDash.classList.add('active')
+    boostSpanText.classList.add('active')
     gradientBoost.style.opacity = '1'
-    boostTag.style.overflow = 'inherit'
-    boostSoon.style.opacity = '1'
+    boostOverflow.style.overflow = 'inherit'
 })
 boostTag.addEventListener('mouseout', function() {
+    boostSpanDash.classList.remove('active')
+    boostSpanText.classList.remove('active')
+    navFooterGradient.classList.remove('inactive')
     gradientBoost.style.opacity = '0'
-    boostTag.style.overflow = 'hidden'
-    boostSoon.style.opacity = '0'
+    setTimeout(function(){
+        boostOverflow.style.overflow = 'hidden'
+    }, 500)
 })
 
 
@@ -310,9 +414,9 @@ boostTag.addEventListener('mouseout', function() {
 // need to animate the line before the PRODUCT button
 // selecting a Pseudo Element is hard in JS 
 // so ive created a span el there - Hope thats cool!
-const span = document.createElement("span")
-productTag.prepend(span)
-const productSpanTag = productTag.querySelector('span')
+// const span = document.createElement("span")
+// productTag.prepend(span)
+// const productSpanTag = productTag.querySelector('span')
 
 
 
@@ -379,6 +483,71 @@ const autoHeight = function() {
     }
 }
 autoHeight()
+
+
+
+
+
+
+
+// here we exclude the product link from the delay
+// and we also create a page leave dealy to do some animation
+const productTagExcludeDT = document.querySelector('li.menu-item-20 a')
+const productTagExcludeMB = document.querySelector('li.menu-item-29 a')
+productTagExcludeDT.classList.add('exclude')
+productTagExcludeMB.classList.add('exclude')
+const menuLeaveLinksDT = document.querySelectorAll('div.menu-main-container ul.menu li a:not(.exclude), li.play a')
+const menuLeaveLinksMB = document.querySelectorAll('div.menu-mobile-container ul.menu li a:not(.exclude)')
+dtMenuTogglerExpandWhite = document.querySelector('span.menu-toggler-expand.white.dt')
+mbMenuTogglerExpandWhite = document.querySelector('span.menu-toggler-expand.white.mb')
+
+                                          
+    menuLeaveLinksDT.forEach(link => { 
+        link.addEventListener("click", function (event) { 
+            event.preventDefault()// need this!
+            const href = link.getAttribute("href") 
+            setTimeout(() => { 
+                window.location.href = href
+            }, 860)
+            dtNavItemsDown()
+            secondaryNavItemsDown()
+            
+            setTimeout(() => { 
+                dtMenuTogglerExpandWhite.style.background = 'white'
+                dtMenuTogglerExpandWhite.style.animation = 'expandWhite 1.4s cubic-bezier(0.87, 0, 0.13, 1) forwards'
+            }, 600)
+
+        })
+    })
+
+    menuLeaveLinksMB.forEach(link => { 
+        link.addEventListener("click", function (event) { 
+            event.preventDefault()// need this!
+            const href = link.getAttribute("href") 
+            setTimeout(() => { 
+                window.location.href = href
+            }, 860)
+            mbNavItemsDown()
+
+            if(bodyTag.classList.contains('.dark-nav')){
+                mbMenuTogglerExpandWhite.style.background = 'black'
+            } else {
+                mbMenuTogglerExpandWhite.style.background = 'white'
+            }
+            
+            setTimeout(() => { 
+                mbMenuTogglerExpandWhite.style.background = 'white'
+                mbMenuTogglerExpandWhite.style.animation = 'expandWhite 1.4s cubic-bezier(0.87, 0, 0.13, 1) forwards'
+            }, 600)
+
+        })
+    })
+
+
+
+
+
+
 
 
 
