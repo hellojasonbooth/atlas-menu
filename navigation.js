@@ -553,13 +553,13 @@ mbMenuTogglerExpandWhite = document.querySelector('span.menu-toggler-expand.whit
         link.addEventListener("click", function (event) { 
             event.preventDefault()// need this!
             const href = link.getAttribute("href") 
-            setTimeout(() => { 
+            setTimeout(function (){ 
                 window.location.href = href
             }, 820)
             dtNavItemsDown()
             secondaryNavItemsDown()
             
-            setTimeout(() => { 
+            setTimeout(function (){ 
                 dtMenuTogglerExpandWhite.style.background = 'white'
                 dtMenuTogglerExpandWhite.style.animation = 'expandWhite 1.4s cubic-bezier(0.87, 0, 0.13, 1) forwards'
             }, 600)
@@ -575,7 +575,7 @@ mbMenuTogglerExpandWhite = document.querySelector('span.menu-toggler-expand.whit
         link.addEventListener("click", function (event) { 
             event.preventDefault()// need this!
             const href = link.getAttribute("href") 
-            setTimeout(() => { 
+            setTimeout(function () { 
                 window.location.href = href
             }, 820)
             mbNavItemsDown()
@@ -586,7 +586,7 @@ mbMenuTogglerExpandWhite = document.querySelector('span.menu-toggler-expand.whit
                 mbMenuTogglerExpandWhite.style.background = 'white'
             }
             
-            setTimeout(() => { 
+            setTimeout(function () { 
                 mbMenuTogglerExpandWhite.style.background = 'white'
                 mbMenuTogglerExpandWhite.style.animation = 'expandWhite 1.4s cubic-bezier(0.87, 0, 0.13, 1) forwards'
             }, 600)
