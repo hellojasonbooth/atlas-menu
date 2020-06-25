@@ -73,15 +73,6 @@
     }
 }
 
-
-:root {
-    --main-ease: cubic-bezier(0.87, 0, 0.13, 1);
-}
-
-
-
-
-
 /* ====== Layout Secondary Nav DESKTOP ====== */
 /* ====== Layout Secondary Nav DESKTOP ====== */
 div.navigations-wrapper {
@@ -144,11 +135,11 @@ div.secondary-menu-container a {
     -webkit-transform: translateY(100%);
         -ms-transform: translateY(100%);
             transform: translateY(100%);
-    -webkit-transition: opacity 0.6s ease, -webkit-transform 1.4s 0.1s var(--main-ease);
-    transition: opacity 0.6s ease, -webkit-transform 1.4s 0.1s var(--main-ease);
-    -o-transition: transform 1.4s 0.1s var(--main-ease), opacity 0.6s ease;
-    transition: transform 1.4s 0.1s var(--main-ease), opacity 0.6s ease;
-    transition: transform 1.4s 0.1s var(--main-ease), opacity 0.6s ease, -webkit-transform 1.4s 0.1s var(--main-ease);
+    -webkit-transition: opacity 0.6s ease, -webkit-transform 1.4s 0.1s cubic-bezier(0.87, 0, 0.13, 1);
+    transition: opacity 0.6s ease, -webkit-transform 1.4s 0.1s cubic-bezier(0.87, 0, 0.13, 1);
+    -o-transition: transform 1.4s 0.1s cubic-bezier(0.87, 0, 0.13, 1), opacity 0.6s ease;
+    transition: transform 1.4s 0.1s cubic-bezier(0.87, 0, 0.13, 1), opacity 0.6s ease;
+    transition: transform 1.4s 0.1s cubic-bezier(0.87, 0, 0.13, 1), opacity 0.6s ease, -webkit-transform 1.4s 0.1s cubic-bezier(0.87, 0, 0.13, 1);
     will-change: transform;
     cursor: pointer;
 }
@@ -188,7 +179,7 @@ span.item-text {
     margin-left: 50px;
     display: inline-block;
     transform: translateY(100%);
-    transition: transform 0.7s 0.1s var(--main-ease);
+    transition: transform 0.7s 0.1s cubic-bezier(0.87, 0, 0.13, 1);
 }
 span.item-text.active {
     transform: translateY(-2%);
@@ -326,11 +317,11 @@ svg.menu-toggler-wrap {
     stroke-dashoffset: 220px;
     width: 48px;
     height: 48px;
-    -webkit-transition: stroke-dashoffset 1.1s var(--main-ease) 0.1s, -webkit-transform 1.1s 0.1s var(--main-ease);
-    transition: stroke-dashoffset 1.1s var(--main-ease) 0.1s, -webkit-transform 1.1s 0.1s var(--main-ease);
-    -o-transition: stroke-dashoffset 1.1s var(--main-ease) 0.1s, transform 1.1s 0.1s var(--main-ease);
-    transition: stroke-dashoffset 1.1s var(--main-ease) 0.1s, transform 1.1s 0.1s var(--main-ease);
-    transition: stroke-dashoffset 1.1s var(--main-ease) 0.1s, transform 1.1s 0.1s var(--main-ease), -webkit-transform 1.1s 0.1s var(--main-ease);
+    -webkit-transition: stroke-dashoffset 1.1s cubic-bezier(0.87, 0, 0.13, 1) 0.1s, -webkit-transform 1.1s 0.1s cubic-bezier(0.87, 0, 0.13, 1);
+    transition: stroke-dashoffset 1.1s cubic-bezier(0.87, 0, 0.13, 1) 0.1s, -webkit-transform 1.1s 0.1s cubic-bezier(0.87, 0, 0.13, 1);
+    -o-transition: stroke-dashoffset 1.1s cubic-bezier(0.87, 0, 0.13, 1) 0.1s, transform 1.1s 0.1s cubic-bezier(0.87, 0, 0.13, 1);
+    transition: stroke-dashoffset 1.1s cubic-bezier(0.87, 0, 0.13, 1) 0.1s, transform 1.1s 0.1s cubic-bezier(0.87, 0, 0.13, 1);
+    transition: stroke-dashoffset 1.1s cubic-bezier(0.87, 0, 0.13, 1) 0.1s, transform 1.1s 0.1s cubic-bezier(0.87, 0, 0.13, 1), -webkit-transform 1.1s 0.1s cubic-bezier(0.87, 0, 0.13, 1);
 }
 svg.active {
     stroke-dashoffset: 0;
@@ -351,11 +342,11 @@ div.burger {
         -ms-flex-align: center;
             align-items: center;
     position: inherit;
-    -webkit-transition: -webkit-transform 1.1s var(--main-ease) 0.1s;
-    transition: -webkit-transform 1.1s var(--main-ease) 0.1s;
-    -o-transition: transform 1.1s var(--main-ease) 0.1s;
-    transition: transform 1.1s var(--main-ease) 0.1s;
-    transition: transform 1.1s var(--main-ease) 0.1s, -webkit-transform 1.1s var(--main-ease) 0.1s;
+    -webkit-transition: -webkit-transform 1.1s cubic-bezier(0.87, 0, 0.13, 1) 0.1s;
+    transition: -webkit-transform 1.1s cubic-bezier(0.87, 0, 0.13, 1) 0.1s;
+    -o-transition: transform 1.1s cubic-bezier(0.87, 0, 0.13, 1) 0.1s;
+    transition: transform 1.1s cubic-bezier(0.87, 0, 0.13, 1) 0.1s;
+    transition: transform 1.1s cubic-bezier(0.87, 0, 0.13, 1) 0.1s, -webkit-transform 1.1s cubic-bezier(0.87, 0, 0.13, 1) 0.1s;
 }
 
 div.burger.active {
@@ -379,11 +370,11 @@ span.burger-slice {
     display: inline-block;
     border-radius: 1px;
     margin: 2px 0;
-    -webkit-transition: background-color 0.4s 0.1s ease, opacity 0.4s 0.3s var(--main-ease), width 0.4s 0.4s var(--main-ease), -webkit-transform 1.1s 0.1s var(--main-ease);
-    transition: background-color 0.4s 0.1s ease, opacity 0.4s 0.3s var(--main-ease), width 0.4s 0.4s var(--main-ease), -webkit-transform 1.1s 0.1s var(--main-ease);
-    -o-transition: background-color 0.4s 0.1s ease, transform 1.1s 0.1s var(--main-ease), opacity 0.4s 0.3s var(--main-ease), width 0.4s 0.4s var(--main-ease);
-    transition: background-color 0.4s 0.1s ease, transform 1.1s 0.1s var(--main-ease), opacity 0.4s 0.3s var(--main-ease), width 0.4s 0.4s var(--main-ease);
-    transition: background-color 0.4s 0.1s ease, transform 1.1s 0.1s var(--main-ease), opacity 0.4s 0.3s var(--main-ease), width 0.4s 0.4s var(--main-ease), -webkit-transform 1.1s 0.1s var(--main-ease);
+    -webkit-transition: background-color 0.4s 0.1s ease, opacity 0.4s 0.3s cubic-bezier(0.87, 0, 0.13, 1), width 0.4s 0.4s cubic-bezier(0.87, 0, 0.13, 1), -webkit-transform 1.1s 0.1s cubic-bezier(0.87, 0, 0.13, 1);
+    transition: background-color 0.4s 0.1s ease, opacity 0.4s 0.3s cubic-bezier(0.87, 0, 0.13, 1), width 0.4s 0.4s cubic-bezier(0.87, 0, 0.13, 1), -webkit-transform 1.1s 0.1s cubic-bezier(0.87, 0, 0.13, 1);
+    -o-transition: background-color 0.4s 0.1s ease, transform 1.1s 0.1s cubic-bezier(0.87, 0, 0.13, 1), opacity 0.4s 0.3s cubic-bezier(0.87, 0, 0.13, 1), width 0.4s 0.4s cubic-bezier(0.87, 0, 0.13, 1);
+    transition: background-color 0.4s 0.1s ease, transform 1.1s 0.1s cubic-bezier(0.87, 0, 0.13, 1), opacity 0.4s 0.3s cubic-bezier(0.87, 0, 0.13, 1), width 0.4s 0.4s cubic-bezier(0.87, 0, 0.13, 1);
+    transition: background-color 0.4s 0.1s ease, transform 1.1s 0.1s cubic-bezier(0.87, 0, 0.13, 1), opacity 0.4s 0.3s cubic-bezier(0.87, 0, 0.13, 1), width 0.4s 0.4s cubic-bezier(0.87, 0, 0.13, 1), -webkit-transform 1.1s 0.1s cubic-bezier(0.87, 0, 0.13, 1);
 }
 
 span.burger-slice.active {
@@ -420,11 +411,11 @@ span.burger-slice.bottom.active {
     -webkit-transition: opacity 0.6s ease;
     -o-transition: opacity 0.6s ease;
     transition: opacity 0.6s ease;
-    -webkit-transition: opacity 0.6s ease, -webkit-transform 1.4s 0.1s var(--main-ease) !important;
-    transition: opacity 0.6s ease, -webkit-transform 1.4s 0.1s var(--main-ease) !important;
-    -o-transition: transform 1.4s 0.1s var(--main-ease), opacity 0.6s ease !important;
-    transition: transform 1.4s 0.1s var(--main-ease), opacity 0.6s ease !important;
-    transition: transform 1.4s 0.1s var(--main-ease), opacity 0.6s ease, -webkit-transform 1.4s 0.1s var(--main-ease) !important;
+    -webkit-transition: opacity 0.6s ease, -webkit-transform 1.4s 0.1s cubic-bezier(0.87, 0, 0.13, 1) !important;
+    transition: opacity 0.6s ease, -webkit-transform 1.4s 0.1s cubic-bezier(0.87, 0, 0.13, 1) !important;
+    -o-transition: transform 1.4s 0.1s cubic-bezier(0.87, 0, 0.13, 1), opacity 0.6s ease !important;
+    transition: transform 1.4s 0.1s cubic-bezier(0.87, 0, 0.13, 1), opacity 0.6s ease !important;
+    transition: transform 1.4s 0.1s cubic-bezier(0.87, 0, 0.13, 1), opacity 0.6s ease, -webkit-transform 1.4s 0.1s cubic-bezier(0.87, 0, 0.13, 1) !important;
     will-change: transform;
     margin-left: 32px;
 }
@@ -432,36 +423,9 @@ span.burger-slice.bottom.active {
     opacity: 0.2;
 }
 
-
-/* div.menu-main-container ul:hover li a {
-    opacity: 0.2;
-} */
-  
-/* .nav-overlay ul.menu li a:hover {
-    color: #fff;
-    opacity: 1;
-  } */
-
-
-/* .nav-overlay ul.menu li a:before {
-    content: "";
-    display: inline-block;
-    border-top: 1px solid #fff;
-    width: 0px;
-    margin: 0 1rem;
-    vertical-align: middle;
-    transition: width 0.4s cubic-bezier(0.65, 0, 0.35, 1);
-}
-.nav-overlay ul.menu li a:hover:before {
-    width: 40px;
-} */
-
 .nav-overlay ul.menu li {
     overflow: hidden;
 }
-
-
-
 
 
 
@@ -481,7 +445,7 @@ div.nav-overlay.active {
 }
 
 .nav-overlay ul.menu li a:visited {
-    transition: transform 1.4s 0.1s var(--main-ease), color 0.25s;
+    transition: transform 1.4s 0.1s cubic-bezier(0.87, 0, 0.13, 1), color 0.25s;
 }
 
 
@@ -498,13 +462,10 @@ div.nav-overlay.active {
     position: absolute;
     top: 50%;
     left: 0;
-    -webkit-transition: width 1.1s 0.1s var(--main-ease);
-    -o-transition: width 1.1s 0.1s var(--main-ease);
-    transition: width 1.1s 0.1s var(--main-ease);
+    -webkit-transition: width 1.1s 0.1s cubic-bezier(0.87, 0, 0.13, 1);
+    -o-transition: width 1.1s 0.1s cubic-bezier(0.87, 0, 0.13, 1);
+    transition: width 1.1s 0.1s cubic-bezier(0.87, 0, 0.13, 1);
 }
-/* #menu-item-20 span.active {
-    width: 40px;
-} */
 
 span.nav-gradient-footer {
     display: block;
@@ -537,20 +498,11 @@ nav.page-nav.mobile div.nav-overlay.active {
 div.menu-mobile-container ul.sub-menu {
     overflow: hidden;
     height: auto;
-    -webkit-transition: height 0.6s 0.1s var(--main-ease);
-    -o-transition: height 0.6s 0.1s var(--main-ease);
-    transition: height 0.6s 0.1s var(--main-ease);
+    -webkit-transition: height 0.6s 0.1s cubic-bezier(0.87, 0, 0.13, 1);
+    -o-transition: height 0.6s 0.1s cubic-bezier(0.87, 0, 0.13, 1);
+    transition: height 0.6s 0.1s cubic-bezier(0.87, 0, 0.13, 1);
     border-left: 1px solid #fff;
 }
-
-/* div.menu-mobile-container ul.sub-menu.inactive {
-    height:0;
-} */
-
-/* div.menu-mobile-container ul.sub-menu.active {
-    height:100%;
-} */
-
 
 
 

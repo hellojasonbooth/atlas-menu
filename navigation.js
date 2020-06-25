@@ -21,9 +21,11 @@ const cookMBBurger = function () {
     mbMenuTogglerBG.classList.toggle('active')
     mbMenuBurger.classList.toggle('active')
 
-    mbMenuBurgerSlices.forEach(slice => {
+
+    for (let i = 0; i < mbMenuBurgerSlices.length; i++) {
+        const slice = mbMenuBurgerSlices[i]
         slice.classList.toggle('active')
-    })
+    }
 
     if (bodyTag.classList.contains('mb-menu-open')) {
         mbMenuToggler.setAttribute( 'aria-expanded', 'true' )
@@ -61,17 +63,20 @@ const runMobileNav = function() {
     if(mobileNavWrapper.classList.contains('active')){
         setTimeout(function() {
             mbNavItemsUp()
-            logoTag.forEach(tag => {
+            for (let i = 0; i < logoTag.length; i++) {
+                const tag = logoTag[i]
                 tag.style.fill = "white"
-            })
+            }
+            
         }, 1000)
     } else {
         mbNavItemsDown()
         mobileNav.classList.remove('active')
         setTimeout(function() {
-            logoTag.forEach(tag => {
+            for (let i = 0; i < logoTag.length; i++) {
+                const tag = logoTag[i]
                 tag.style.fill = ""
-            })
+            }
         }, 500)
     }
 
@@ -79,22 +84,26 @@ const runMobileNav = function() {
 
 // nav items animation up
 const mbNavItemsUp = function() {
-    mobileNavLinks.forEach((link, index) => {
+
+    for (let i = 0; i < mobileNavLinks.length; i++) {
+        const link = mobileNavLinks[i]
         setTimeout(function() {
             link.style.transform = 'translateY(-4%)'
-        }, (70 * (index + 1)))
-    }) 
+        }, i * 90)
+    }
+
 }
 // nav items animation down
 const mbNavItemsDown = function() {
-    mobileNavLinks.forEach((link, index) => {
+
+    for (let i = 0; i < mobileNavLinks.length; i++) {
+        const link = mobileNavLinks[i]
         setTimeout(function() {
             link.style.transform = 'translateY(100%)'
-        }, (70 * (index + 1)))
-    }) 
+        }, i * 90)
+    }
+
 }
-
-
 
 
 
@@ -112,23 +121,34 @@ const desktopNavLinks = desktopNav.querySelectorAll('ul.menu li a')
 const dtSecondaryNavigation = document.querySelector('div.secondary-menu-container')
 
 // hover nav links to drop opacity and highlight the selected
-desktopNavLinks.forEach(link => {
 
+for (let i = 0; i < desktopNavLinks.length; i++) {
+    const link = desktopNavLinks[i]
+    
     link.addEventListener('mouseenter', function () {
         link.style.opacity = '0.2'
 
-        desktopNavLinks.forEach(link => {
+        for (let i = 0; i < desktopNavLinks.length; i++) {
+            const link = desktopNavLinks[i]
             link.style.opacity = '0.2'
-        })
+        }
+
         link.style.opacity = this.style.color
     })
 
     link.addEventListener('mouseout', function () {
-        desktopNavLinks.forEach(link => {
+        for (let i = 0; i < desktopNavLinks.length; i++) {
+            const link = desktopNavLinks[i]
             link.style.opacity = ''
-        })
+        }
     })
-})
+
+
+}
+
+
+
+
 
 // if nav is open logo is white else is in touched in terms of original styling
 const logoTag = document.querySelectorAll('a.nav-logo svg path:not(.green-circle)')
@@ -141,29 +161,36 @@ const runDesktopNav = function () {
         desktopNav.classList.add('active')
         setTimeout(function() {
             dtNavItemsUp()
-            // productSpanTag.classList.add('active')
-            logoTag.forEach(tag => {
+            
+            for (let i = 0; i < logoTag.length; i++) {
+                const tag = logoTag[i]
                 tag.style.fill = "white"
-            })
+            }
+
         }, 1000)
         bodyTag.classList.add('overflow-hidden')
     } else {
         removeNavScrollTop()
         setTimeout(function() {
             desktopNav.classList.remove('active')
-            logoTag.forEach(tag => {
+            
+            for (let i = 0; i < logoTag.length; i++) {
+                const tag = logoTag[i]
                 tag.style.fill = ""
-            })
+            }
+
         }, 800)
         dtNavItemsDown()
         secondaryNavItemsDown()
         productTag.classList.remove('selected')
         
-        desktopNavLinks.forEach(link => {
+
+        for (let i = 0; i < desktopNavLinks.length; i++) {
+            const link = desktopNavLinks[i]
             link.classList.remove('fade')
-        })
+        }
+
         bodyTag.classList.remove('overflow-hidden')
-        // productSpanTag.classList.remove('active')
     }
 
 }
@@ -171,20 +198,24 @@ const runDesktopNav = function () {
 
 const dtNavItemsUp = function(els) {
 
-    desktopNavLinks.forEach((link, index) => {
+    for (let i = 0; i < desktopNavLinks.length; i++) {
+        const link = desktopNavLinks[i]
         setTimeout(function() {
             link.style.transform = 'translateY(-4%)'
-        }, (70 * (index + 1)))
-    })
+        }, i * 90)
+    }
     
 }
 
 const dtNavItemsDown = function() {
-    desktopNavLinks.forEach((link, index) => {
+
+    for (let i = 0; i < desktopNavLinks.length; i++) {
+        const link = desktopNavLinks[i]
         setTimeout(function() {
             link.style.transform = 'translateY(100%)'
-        }, (70 * (index + 1)))
-    })
+        }, i * 90)
+    }
+
 }
 
 
@@ -217,9 +248,10 @@ const cookDTBurger = function () {
     dtMenuTogglerBG.classList.toggle('active')
     dtMenuBurger.classList.toggle('active')
 
-    dtMenuBurgerSlices.forEach(slice => {
+    for (let i = 0; i < dtMenuBurgerSlices.length; i++) {
+        const slice = dtMenuBurgerSlices[i]
         slice.classList.toggle('active')
-    })
+    }
 
     if (bodyTag.classList.contains('dt-menu-open')) {
         dtMenuToggler.setAttribute( 'aria-expanded', 'true' )
@@ -244,41 +276,53 @@ const productTag = document.getElementById('menu-item-20')
 const secondaryNavLinks = document.querySelectorAll('div.secondary-menu-container ul li a')
 
 // same for the secondary nav links
-secondaryNavLinks.forEach(link => {
-
+for (let i = 0; i < secondaryNavLinks.length; i++) {
+    const link = secondaryNavLinks[i]
+    
     link.addEventListener('mouseenter', function () {
         link.style.opacity = '0.2'
 
-        secondaryNavLinks.forEach(link => {
+        for (let i = 0; i < secondaryNavLinks.length; i++) {
+            const link = secondaryNavLinks[i]
             link.style.opacity = '0.2'
-        })
+        }
+
         link.style.opacity = this.style.color
     })
 
     link.addEventListener('mouseout', function () {
-        secondaryNavLinks.forEach(link => {
+        for (let i = 0; i < secondaryNavLinks.length; i++) {
+            const link = secondaryNavLinks[i]
             link.style.opacity = ''
-        })
+        }
     })
-})
+
+
+}
+
+
 
 
 const secondaryNavItemsUp = function() {
 
-    secondaryNavLinks.forEach((link, index) => {
+    for (let i = 0; i < secondaryNavLinks.length; i++) {
+        const link = secondaryNavLinks[i]
         setTimeout(function() {
             link.style.transform = 'translateY(-4%)'
-        }, (70 * (index + 1)))
-    })
+        }, i * 90)
+    }
 
 }
 
-const secondaryNavItemsDown = function(event) {
-    secondaryNavLinks.forEach((link, index) => {
+const secondaryNavItemsDown = function() {
+
+    for (let i = 0; i < secondaryNavLinks.length; i++) {
+        const link = secondaryNavLinks[i]
         setTimeout(function() {
             link.style.transform = 'translateY(100%)'
-        }, (70 * (index + 1)))
-    })
+        }, i * 90)
+    }
+
 }
 
 
@@ -297,9 +341,10 @@ productTag.addEventListener('click', function (event) {
 
     }
 
-    desktopNavLinks.forEach(link => {
+    for (let i = 0; i < desktopNavLinks.length; i++) {
+        const link = desktopNavLinks[i]
         link.classList.toggle('fade')
-    })
+    }
 
 })
 
@@ -501,14 +546,16 @@ const menuLeaveLinksMB = document.querySelectorAll('div.menu-mobile-container ul
 dtMenuTogglerExpandWhite = document.querySelector('span.menu-toggler-expand.white.dt')
 mbMenuTogglerExpandWhite = document.querySelector('span.menu-toggler-expand.white.mb')
 
-                                          
-    menuLeaveLinksDT.forEach(link => { 
+
+    for (let i = 0; i < menuLeaveLinksDT.length; i++) {
+        const link = menuLeaveLinksDT[i]
+
         link.addEventListener("click", function (event) { 
             event.preventDefault()// need this!
             const href = link.getAttribute("href") 
             setTimeout(() => { 
                 window.location.href = href
-            }, 860)
+            }, 820)
             dtNavItemsDown()
             secondaryNavItemsDown()
             
@@ -518,15 +565,19 @@ mbMenuTogglerExpandWhite = document.querySelector('span.menu-toggler-expand.whit
             }, 600)
 
         })
-    })
+ 
+    }
 
-    menuLeaveLinksMB.forEach(link => { 
+
+    for (let i = 0; i < menuLeaveLinksMB.length; i++) {
+        const link = menuLeaveLinksMB[i]
+
         link.addEventListener("click", function (event) { 
             event.preventDefault()// need this!
             const href = link.getAttribute("href") 
             setTimeout(() => { 
                 window.location.href = href
-            }, 860)
+            }, 820)
             mbNavItemsDown()
 
             if(bodyTag.classList.contains('.dark-nav')){
@@ -541,19 +592,8 @@ mbMenuTogglerExpandWhite = document.querySelector('span.menu-toggler-expand.whit
             }, 600)
 
         })
-    })
-
-
-
-
-
-
-
-
-
-
-
-
+ 
+    }
 
 
 
